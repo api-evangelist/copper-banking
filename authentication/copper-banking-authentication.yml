@@ -1,0 +1,61 @@
+generated: '2026-08-04'
+method: probed
+source: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+docs: null
+docs_note: >-
+  Copper publishes no developer documentation and no authentication guide. This profile
+  was derived entirely from the authorization server metadata document the MCP host
+  serves, plus the observed behaviour of its /authorize, /token and /register endpoints.
+  It could NOT be derived with derive-authentication.py because there is no OpenAPI in
+  this repo to read securitySchemes from.
+summary:
+  types: [oauth2]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  pkce: [S256]
+  dynamic_client_registration: true
+schemes:
+- name: CopperMCPOAuth2
+  type: oauth2
+  source: well-known/copper-banking-oauth-authorization-server.json
+  issuer: https://mcp.getcopper.com/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://mcp.getcopper.com/authorize
+    tokenUrl: https://mcp.getcopper.com/token
+    scopes: [mcp, offline_access]
+  registration_endpoint: https://mcp.getcopper.com/register
+  token_endpoint_auth_methods: [client_secret_post, none]
+  response_types: [code]
+  grant_types: [authorization_code, refresh_token]
+  code_challenge_methods: [S256]
+observed_behaviour:
+- endpoint: /authorize
+  method: GET
+  status: 400
+  body: '{"error":"invalid_request","error_description":"..."}'
+  note: Validates query parameters and returns an RFC 6749 §4.1.2.1 error object.
+- endpoint: /token
+  method: GET
+  status: 405
+  body: '{"error":"method_not_allowed",...}'
+- endpoint: /token
+  method: POST
+  status: 400
+  body: '{"error":"invalid_request",...}'
+- endpoint: /register
+  method: POST
+  status: 400
+  body: '{"error":"invalid_client_metadata",...}'
+  note: RFC 7591 dynamic client registration is live and validates client metadata.
+gaps:
+- No /.well-known/oauth-protected-resource document (RFC 9728), so an MCP client cannot
+  discover the resource server and its authorization servers from the resource itself.
+- No published documentation of the authentication flow, token lifetimes, or what the
+  `mcp` scope authorizes.
+- No API keys, no bearer-token guide, no public developer credentials of any kind —
+  Copper has no public developer program.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+  http_status: 200

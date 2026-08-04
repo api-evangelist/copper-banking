@@ -1,0 +1,94 @@
+generated: '2026-08-04'
+method: probed
+source: live probe of every Copper host discovered during contract discovery
+notes: >-
+  Copper operates no public developer portal, so the /.well-known/ surface was probed
+  against every host that could be discovered: the marketing site, the legacy banking
+  web app, the mobile/web app backend gateway found in the app JavaScript bundle, and
+  the mcp. subdomain found in DNS. Exactly one document was returned: RFC 8414 OAuth
+  2.0 Authorization Server Metadata on mcp.getcopper.com. app.getcopper.com is a
+  single-page-app catch-all that answers HTTP 200 with an HTML shell for every
+  /.well-known/* path — those are recorded as false positives, not hits.
+hosts:
+- host: https://mcp.getcopper.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json; charset=utf-8
+    file: copper-banking-oauth-authorization-server.json
+    spec: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://www.getcopper.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://gateway.api.getcopper.com
+  note: >-
+    Private backend gateway for the Copper mobile and web apps, discovered in the
+    app.getcopper.com JavaScript bundle. Answers a JSON error envelope
+    ({"statusCode","error","message"}) for every path probed. No documentation,
+    no specification, no discovery documents.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://app.getcopper.com
+  note: >-
+    Legacy Copper Banking single-page web app (still shipping the pre-May-2024 teen
+    banking bundle, with Synapse endpoints compiled in). Returns HTTP 200 with the
+    same 1,574-byte HTML shell for EVERY path, including all /.well-known/* paths.
+    No document here is a real hit.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    hit: false
+    reason: SPA catch-all returned text/html, not an AgentCard JSON object
+  - path: /.well-known/agent.json
+    status: 200
+    hit: false
+    reason: SPA catch-all returned text/html, not an AgentCard JSON object
+  - path: /.well-known/security.txt
+    status: 200
+    hit: false
+    reason: SPA catch-all returned text/html
+  - path: /.well-known/openid-configuration
+    status: 200
+    hit: false
+    reason: SPA catch-all returned text/html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    hit: false
+    reason: SPA catch-all returned text/html
+security_txt: null
+x-evidence:
+  fetched: '2026-08-04'
+  hits: 1
+  probes: 39

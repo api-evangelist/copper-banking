@@ -1,0 +1,41 @@
+# Copper Banking
+
+> Copper (Copper Banking) is a Seattle-based consumer fintech founded in 2019 by Eddie Behringer and Stefan Berglund. It launched as a teen banking app and debit card on the Synapse banking-as-a-service platform, discontinued its bank deposit accounts and debit cards in May 2024 after Synapse collapsed, and repositioned as a financial-empowerment and earning app where members earn cash and gift-card rewards through cash back, paid surveys, receipt scanning, games and referrals, alongside financial-literacy content and in-school workshops.
+
+Copper publishes no public developer portal, no API documentation, and no API specification. The only machine-readable surface reachable without credentials is an OAuth 2.0 authorization server for a Model Context Protocol endpoint at mcp.getcopper.com, which Copper does not document.
+
+## APIs
+
+- [Copper MCP Server](https://mcp.getcopper.com/): Undocumented Model Context Protocol server. Publishes RFC 8414 OAuth 2.0 Authorization Server Metadata declaring the `mcp` and `offline_access` scopes, authorization-code grant with PKCE (S256), refresh tokens, and RFC 7591 dynamic client registration. The transport endpoint is not discoverable anonymously, so the tool list and input schemas cannot be introspected.
+
+## Specs
+
+- [OAuth 2.0 Authorization Server Metadata](https://mcp.getcopper.com/.well-known/oauth-authorization-server): RFC 8414 discovery document for the MCP server.
+
+## Docs
+
+- [Copper](https://www.getcopper.com/): Company website.
+- [About Copper](https://www.getcopper.com/about-us): Company background, mission and leadership.
+- [How to Earn](https://www.getcopper.com/how-to-earn): The earning surface — cash back, surveys, receipt scanning, games, referrals.
+- [Money Moves](https://www.getcopper.com/money-moves): Financial-literacy guidance.
+- [Copper Corner](https://www.getcopper.com/blog): Company blog.
+- [Insights](https://www.getcopper.com/insights): Consumer and Gen Z research.
+- [Help Center](https://getcopper.zendesk.com/hc/en-us): Customer support.
+- [Advertiser and partnership](https://www.getcopper.com/lp/partnership): Partner enquiries (partner@getcopper.com).
+
+## Legal
+
+- [Terms of Service](https://www.getcopper.com/legal/terms)
+- [Privacy Policy](https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/65554dcca822725a736a8e84_da54d9e097d505e5874cac4bd7088ba6_Privacy%20Policy_11.20.2023.docx.pdf)
+- [GLBA Notice](https://www.getcopper.com/legal/glba)
+
+## Apps
+
+- [Copper on the App Store](https://apps.apple.com/us/app/copper-banking-teen-debit-card/id1486647561)
+- [Copper on Google Play](https://play.google.com/store/apps/details?id=com.getcopper.copper)
+
+## Notes
+
+- There is no public Copper developer API. `gateway.api.getcopper.com` is the private backend for Copper's own mobile and web apps and publishes no specification or documentation.
+- `app.getcopper.com` still serves the pre-May-2024 Copper Banking single-page app, whose bundle still references the defunct Synapse platform.
+- Do not confuse this company with Copper CRM (copper.com / developer.copper.com) or Copper.co (digital asset custody, docs.copper.co). They are unrelated companies that share the name.

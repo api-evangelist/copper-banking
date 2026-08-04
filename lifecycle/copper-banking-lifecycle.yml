@@ -1,0 +1,69 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://www.getcopper.com/about-us, https://app.getcopper.com/, and contemporaneous
+  reporting of the May 2024 discontinuation
+versioning:
+  scheme: none-published
+  current: null
+  docs: null
+  note: Copper publishes no API versioning policy because it publishes no public API.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No deprecation policy, no RFC 8594 Sunset/Deprecation header support, and no advance
+    notice mechanism is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_note: >-
+  No status page found. status.getcopper.com does not resolve, and no status link appears
+  in the site navigation or footer.
+changelog: null
+changelog_note: Copper publishes a blog (/blog) and an insights section, but no dated
+  product or API changelog.
+product_lifecycle:
+- event: launch
+  date: '2019'
+  what: >-
+    Copper launches as a teen banking app and debit card, founded by Eddie Behringer and
+    Stefan Berglund in Seattle, built on the Synapse banking-as-a-service platform with
+    deposits held at Synapse's partner banks.
+- event: expansion
+  date: '2022'
+  what: >-
+    Copper raises $29M and launches Copper Investing, a teen-focused registered investment
+    advisor offering automated portfolios.
+- event: discontinued
+  date: '2024-05-13'
+  what: >-
+    Copper abruptly discontinued its bank deposit accounts and debit cards, notifying
+    customers on 12 May 2024 that the products would end on 13 May 2024, after
+    banking-as-a-service middleware provider Synapse collapsed and sunset its service.
+    This is the defining lifecycle event for this provider: the banking product the
+    company was named for no longer exists.
+  impact: >-
+    Customers lost access to funds during the wind-down; Copper began returning customer
+    funds when the TabaPay acquisition of Synapse fell through, and reported that only a
+    small single-digit percentage of customers had not received funds by shutdown.
+- event: repositioned
+  date: '2024'
+  what: >-
+    Copper repositioned as a financial-empowerment and earning app — cash back, paid
+    surveys, receipt scanning, games and referrals redeemable for gift cards, PayPal or
+    Venmo — alongside financial-literacy guides and in-school workshops.
+- event: legacy-surface-still-live
+  date: '2026-08-04'
+  what: >-
+    app.getcopper.com still serves the pre-May-2024 Copper Banking single-page app, whose
+    JavaScript bundle still compiles in api.synapsefi.com, uat-api.synapsefi.com and
+    uiaas.synapsefi.com endpoints for a platform that no longer operates. The bundle is
+    stale surface area that was never retired.
+deprecated_operations: []
+x-evidence:
+  fetched: '2026-08-04'
+  app_bundle: https://app.getcopper.com/assets/index-d3615b19.js
+  app_bundle_status: 200
+  status_page_probe: status.getcopper.com — DNS does not resolve

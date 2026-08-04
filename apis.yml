@@ -1,23 +1,95 @@
 aid: copper-banking
 name: Copper Banking
-description: 'Copper Banking is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Copper (Copper Banking) is a Seattle-based consumer fintech founded in
+  2019 by Eddie Behringer and Stefan Berglund that began as a teen banking app and debit
+  card built on the Synapse banking-as-a-service platform. After Synapse''s collapse
+  Copper abruptly discontinued its bank deposit accounts and debit cards in May 2024
+  and repositioned as a financial-empowerment and earning app, where members earn cash
+  and gift-card rewards through cash back, surveys, receipt scanning, games and referrals,
+  alongside financial-literacy content, guides and in-school workshops. Copper publishes
+  no public developer portal, documentation or API specification; the only machine-readable
+  surface reachable without credentials is an OAuth 2.0 authorization server for a
+  Model Context Protocol endpoint at mcp.getcopper.com.'
+image: https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/673cf4a1dd4ac006b4602fab_OpenGraph_1200x627.jpg
 url: https://raw.githubusercontent.com/api-evangelist/copper-banking/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-apis: []
+- Financial Services
+- Fintech
+- Consumer Finance
+- Financial Literacy
+- Rewards
+- Neobank
+- Mobile Banking
+- Teen Banking
+- Model Context Protocol
+apis:
+- name: Copper MCP Server
+  description: 'An undocumented Model Context Protocol server operated by Copper at
+    mcp.getcopper.com. The host publishes RFC 8414 OAuth 2.0 Authorization Server Metadata
+    at /.well-known/oauth-authorization-server declaring the `mcp` and `offline_access`
+    scopes, authorization-code grant with PKCE (S256), refresh tokens, and RFC 7591
+    dynamic client registration. The MCP transport endpoint itself was not discoverable
+    at any conventional path anonymously, so the tool list and input schemas could not
+    be introspected. Copper publishes no documentation for this surface.'
+  humanURL: https://www.getcopper.com/
+  baseURL: https://mcp.getcopper.com/
+  tags:
+  - Model Context Protocol
+  - OAuth
+  - Agents
+  properties:
+  - type: MCPServer
+    url: mcp/copper-banking-mcp.yml
+  - type: OAuthScopes
+    url: scopes/copper-banking-scopes.yml
+  - type: Authentication
+    url: authentication/copper-banking-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/copper-banking-domain-security.yml
 - type: Website
+  url: https://www.getcopper.com/
+- type: Blog
+  url: https://www.getcopper.com/blog
+- type: Support
+  url: https://getcopper.zendesk.com/hc/en-us
+- type: TermsOfService
+  url: https://www.getcopper.com/legal/terms
+- type: PrivacyPolicy
+  url: https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/65554dcca822725a736a8e84_da54d9e097d505e5874cac4bd7088ba6_Privacy%20Policy_11.20.2023.docx.pdf
+- type: Compliance
+  url: https://www.getcopper.com/legal/glba
+- type: WellKnown
+  url: well-known/copper-banking-well-known.yml
+- type: MCPServer
+  url: mcp/copper-banking-mcp.yml
+- type: OAuthScopes
+  url: scopes/copper-banking-scopes.yml
+- type: Authentication
+  url: authentication/copper-banking-authentication.yml
+- type: Conformance
+  url: conformance/copper-banking-conformance.yml
+- type: Lifecycle
+  url: lifecycle/copper-banking-lifecycle.yml
+- type: LLMsTxt
+  url: llms/copper-banking-llms.txt
+- type: SecondaryMarket
   url: https://forgeglobal.com/copper-banking_stock/
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 9
+  pass: local-v1

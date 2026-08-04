@@ -1,0 +1,49 @@
+generated: '2026-08-04'
+method: probed
+source: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+status: published
+documented: false
+server:
+  name: copper
+  host: https://mcp.getcopper.com/
+  transport: unknown
+  url: null
+  url_note: >-
+    The MCP transport endpoint was NOT discoverable anonymously. GET and POST were
+    probed against /, /mcp, /mcp/, /sse, /mcp/sse, /messages, /mcp/messages, /api/mcp,
+    /v1/mcp, /rpc, /server, /stream, /http, /v1, /copper, /api and /tools — every one
+    returned an Express 404 ("Cannot GET|POST <path>"). The endpoint is either at a
+    non-guessable or per-tenant path, or is only issued to a client after the OAuth
+    dance. No URL is recorded rather than guessing one.
+evidence_of_server:
+  - Dedicated mcp.getcopper.com subdomain resolves (35.241.5.244); getcopper.com has
+    no DNS wildcard, so the record was deliberately created.
+  - RFC 8414 OAuth 2.0 Authorization Server Metadata served at
+    /.well-known/oauth-authorization-server with HTTP 200, application/json.
+  - scopes_supported is exactly ["mcp", "offline_access"] — the `mcp` scope names the
+    protected resource.
+  - /authorize, /token and /register are all live and return structured OAuth error
+    objects on malformed input (400 invalid_request / 400 invalid_client_metadata /
+    405 method_not_allowed), i.e. a working authorization server, not a placeholder.
+authorization:
+  issuer: https://mcp.getcopper.com/
+  authorization_endpoint: https://mcp.getcopper.com/authorize
+  token_endpoint: https://mcp.getcopper.com/token
+  registration_endpoint: https://mcp.getcopper.com/register
+  dynamic_client_registration: true
+  grant_types: [authorization_code, refresh_token]
+  pkce: [S256]
+  scopes: [mcp, offline_access]
+  document: well-known/copper-banking-oauth-authorization-server.json
+tools: []
+tools_note: >-
+  tools/list could not be called: the transport endpoint was not reachable anonymously
+  and the server is OAuth-protected. The real tool set and inputSchemas require an
+  authenticated introspection with a client registered at the registration_endpoint.
+  No tools are listed rather than deriving a candidate set — Copper publishes no
+  OpenAPI to derive them from.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+  http_status: 200
+  content_type: application/json; charset=utf-8

@@ -1,0 +1,94 @@
+generated: '2026-08-04'
+method: probed
+source: >-
+  well-known/copper-banking-oauth-authorization-server.json plus live probes of
+  mcp.getcopper.com, gateway.api.getcopper.com and www.getcopper.com
+scope_note: >-
+  Copper publishes no API documentation, so nothing here is derived from an OpenAPI or
+  from a vendor conformance claim. Every `conforms: true` below is anchored to a
+  document or response actually observed on a Copper host.
+standards:
+- id: oauth2
+  name: OAuth 2.0 (RFC 6749)
+  conforms: true
+  evidence: >-
+    mcp.getcopper.com serves authorization_endpoint/token_endpoint and returns RFC 6749
+    error objects (invalid_request) on malformed requests.
+- id: rfc8414-authorization-server-metadata
+  name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+  conforms: true
+  evidence: >-
+    HTTP 200 application/json at
+    https://mcp.getcopper.com/.well-known/oauth-authorization-server with issuer,
+    authorization_endpoint, token_endpoint, registration_endpoint, response_types_supported,
+    grant_types_supported, scopes_supported and code_challenge_methods_supported.
+- id: rfc7636-pkce
+  name: Proof Key for Code Exchange (RFC 7636)
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"] in the authorization server metadata.'
+- id: rfc7591-dynamic-client-registration
+  name: OAuth 2.0 Dynamic Client Registration (RFC 7591)
+  conforms: true
+  evidence: >-
+    registration_endpoint https://mcp.getcopper.com/register is live and returns
+    {"error":"invalid_client_metadata"} on an empty registration body, i.e. it validates
+    client metadata per the spec.
+- id: mcp
+  name: Model Context Protocol
+  conforms: partial
+  evidence: >-
+    A dedicated mcp.getcopper.com host with an `mcp` OAuth scope establishes that an MCP
+    server exists, but the transport endpoint was not discoverable anonymously and
+    tools/list could not be called, so protocol-level conformance is unverified.
+- id: rfc9728-protected-resource-metadata
+  name: OAuth 2.0 Protected Resource Metadata (RFC 9728)
+  conforms: false
+  evidence: /.well-known/oauth-protected-resource returned 404 on mcp.getcopper.com.
+- id: openapi
+  name: OpenAPI Specification
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document found at any of /openapi.json, /openapi.yaml,
+    /swagger.json, /v1/openapi.json, /v2/openapi.json, /api-docs, /documentation,
+    /documentation/json, /docs, /docs/json or /redoc on www.getcopper.com,
+    app.getcopper.com or gateway.api.getcopper.com.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: /graphql returned 404 on every Copper host probed.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No event, streaming or webhook surface is published. Not applicable.
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json returned 404 on
+    www.getcopper.com, mcp.getcopper.com and gateway.api.getcopper.com. app.getcopper.com
+    returns HTTP 200 for every path but with an HTML SPA shell, which is not an AgentCard.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: >-
+    gateway.api.getcopper.com returns a bespoke envelope
+    {"statusCode":404,"error":"Not Found","message":"Not Found"} as application/json,
+    not application/problem+json.
+- id: rfc9116-security-txt
+  name: security.txt (RFC 9116)
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on every Copper host probed.
+regulatory:
+- id: glba
+  name: Gramm-Leach-Bliley Act privacy notice
+  published: true
+  url: https://www.getcopper.com/legal/glba
+  document: https://uploads-ssl.webflow.com/61f9b891f832346a0a7b9f9a/642f5975bda31a548c201f0f_Copper_GLBA_Notice_3.29.23.pdf
+  dated: '2023-03-29'
+  evidence: Linked from the getcopper.com footer as "GLBA Notice"; 301 redirects to a
+    dated PDF notice.
+certifications_published: []
+certifications_note: >-
+  No trust center, security page or compliance page was found on getcopper.com, and no
+  SOC 2, ISO 27001, PCI DSS, HIPAA or FedRAMP claim was observed anywhere on Copper's
+  public surface.

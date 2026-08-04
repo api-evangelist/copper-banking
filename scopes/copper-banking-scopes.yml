@@ -1,0 +1,39 @@
+generated: '2026-08-04'
+method: probed
+source: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+docs: null
+docs_note: Copper publishes no scope or permission reference; the scope list below is
+  taken verbatim from the authorization server's own RFC 8414 metadata document.
+schemes:
+- name: CopperMCPOAuth2
+  type: oauth2
+  source: well-known/copper-banking-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://mcp.getcopper.com/authorize
+    tokenUrl: https://mcp.getcopper.com/token
+    pkce: S256
+    refresh_token: true
+scopes:
+- scope: mcp
+  description: Access to Copper's Model Context Protocol server. Copper publishes no
+    description of what this scope grants; the name is taken verbatim from
+    scopes_supported in the authorization server metadata.
+  flows: [authorizationCode]
+  sources: [well-known/copper-banking-oauth-authorization-server.json]
+- scope: offline_access
+  description: Issue a refresh token so the client can obtain new access tokens without
+    the resource owner present (OpenID Connect / RFC 6749 offline access).
+  flows: [authorizationCode]
+  sources: [well-known/copper-banking-oauth-authorization-server.json]
+coverage:
+  scopes_declared: 2
+  granularity: coarse
+  note: >-
+    A single `mcp` scope covers the entire protected resource. There is no per-tool or
+    per-resource scope decomposition, so an agent token cannot be least-privileged
+    against individual Copper capabilities.
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://mcp.getcopper.com/.well-known/oauth-authorization-server
+  http_status: 200
