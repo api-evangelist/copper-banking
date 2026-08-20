@@ -21,6 +21,17 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
+- Financial-Services
+- Fintech
+- Consumer Finance
+- Financial Literacy
+- Rewards
+- Neobank
+- Mobile Banking
+- Teen Banking
+- MCP
+tags_raw:
+- Company
 - Financial Services
 - Fintech
 - Consumer Finance
@@ -42,6 +53,10 @@ apis:
   humanURL: https://www.getcopper.com/
   baseURL: https://mcp.getcopper.com/
   tags:
+  - MCP
+  - Authentication
+  - Agents
+  tags_raw:
   - Model Context Protocol
   - OAuth
   - Agents
