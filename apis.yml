@@ -10,6 +10,17 @@ description: 'Copper (Copper Banking) is a Seattle-based consumer fintech founde
   no public developer portal, documentation or API specification; the only machine-readable
   surface reachable without credentials is an OAuth 2.0 authorization server for a
   Model Context Protocol endpoint at mcp.getcopper.com.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/673cf4a1dd4ac006b4602fab_OpenGraph_1200x627.jpg
 url: https://raw.githubusercontent.com/api-evangelist/copper-banking/refs/heads/main/apis.yml
 x-type: company
