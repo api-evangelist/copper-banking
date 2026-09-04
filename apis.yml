@@ -21,6 +21,20 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  - scopes
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/673cf4a1dd4ac006b4602fab_OpenGraph_1200x627.jpg
 url: https://raw.githubusercontent.com/api-evangelist/copper-banking/refs/heads/main/apis.yml
 x-type: company
