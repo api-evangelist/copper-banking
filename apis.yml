@@ -46,7 +46,7 @@ created: '2026-08-04'
 modified: '2026-08-04'
 tags:
 - Company
-- Financial-Services
+- Financial Services
 - Fintech
 - Consumer Finance
 - Financial Literacy
@@ -66,6 +66,7 @@ tags_raw:
 - Mobile Banking
 - Teen Banking
 - Model Context Protocol
+- Financial-Services
 apis:
 - name: Copper MCP Server
   description: 'An undocumented Model Context Protocol server operated by Copper at
