@@ -64,5 +64,101 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Copper Banking is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/copper-banking_stock/
+Copper (Copper Banking) is a Seattle-based consumer fintech founded in 2019 by Eddie Behringer and Stefan Berglund that began as a teen banking app and debit card built on the Synapse banking-as-a-service platform. After Synapse's collapse Copper abruptly discontinued its bank deposit accounts and debit cards in May 2024 and repositioned as a financial-empowerment and earning app, where members earn cash and gift-card rewards through cash back, surveys, receipt scanning, games and referrals, alongside financial-literacy content, guides and in-school workshops. Copper publishes no public developer portal, documentation or API specification; the only machine-readable surface reachable without credentials is an OAuth 2.0 authorization server for a Model Context Protocol endpoint at mcp.getcopper.com.
+
+**Areas:** Company · Financial Services · Fintech · Consumer Finance · Financial Literacy · Rewards · Neobank · Mobile Banking · Teen Banking · MCP
+
+## Copper Banking on APIs.io
+
+Everything profiled for Copper Banking is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/copper-banking/](https://apis.io/providers/copper-banking/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Copper MCP Server](https://apis.io/apis/copper-banking/copper-mcp-server/) — An undocumented Model Context Protocol server operated by Copper at mcp.getcopper.com. The host publishes RFC 8414 OAuth 2.0 Authorization Server Metadata…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [copper](https://apis.io/servers/copper-banking/copper/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Copper Banking Authentication](https://apis.io/security/copper-banking/copper-banking-authentication/)
+- [Copper Banking Domain Security](https://apis.io/security/copper-banking/copper-banking-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Copper Banking Scopes](https://apis.io/scopes/copper-banking/copper-banking-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.getcopper.com/)
+- [Support](https://getcopper.zendesk.com/hc/en-us)
+- [Blog](https://www.getcopper.com/blog)
+- [Compliance](https://www.getcopper.com/legal/glba)
+- [Terms of service](https://www.getcopper.com/legal/terms)
+- [Privacy policy](https://cdn.prod.website-files.com/61f9b891f832346a0a7b9f9a/65554dcca822725a736a8e84_da54d9e097d505e5874cac4bd7088ba6_Privacy%20Policy_11.20.2023.docx.pdf)
+
+## API Evangelist rating
+
+**Kin Score 21.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 28.9 |
+
+**Agent readiness 15.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 37.0** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/copper-banking/](https://apis.io/providers/copper-banking/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Copper Banking: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/copper-banking/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
